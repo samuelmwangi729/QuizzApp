@@ -1,0 +1,72 @@
+{%extends 'Layouts/Quizes.html'%}
+{%block content %}
+<div class="row">
+    <div class="col-sm-6 offset-sm-3">
+        <h2 class="text-center display-5 fw-bold text-decoration-underline">
+            Cyber Security Quiz app
+        </h2>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            {% if question %}
+            <form action="/Submit-Answer/" method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">
+                        Question.{{question.QuestionId}} <br />
+                        <strong>{{question.Question}}</strong>
+                    </label>
+                </div>
+                <input type="hidden" name="QuestionTitle" class="form-control" value="{{question.Question}}">
+                <div class="row">
+                    <div class="col-sm-6 mb-3 form-check">
+                        <input type="radio" class="form-check-input" value="{{question.Option1}}" name="SelectionChoice"
+                            required>
+                        <label class="form-check-label" for="Answer">{{question.Option1}}</label>
+                    </div>
+                    <div class=" col-sm-6 mb-3 form-check">
+                        <input type="radio" class="form-check-input" value="{{question.Option2}}" name="SelectionChoice"
+                            required>
+                        <label class="form-check-label" for="Answer">{{question.Option2}}</label>
+                    </div>
+                    <div class="col-sm-6 mb-3 form-check">
+                        <input type="radio" class="form-check-input" value="{{question.Option3}}" name="SelectionChoice"
+                            required>
+                        <label class="form-check-label" for="Answer">{{question.Option3}}</label>
+                    </div>
+                    <div class=" col-sm-6 mb-3 form-check">
+                        <input type="radio" class="form-check-input" value="{{question.Option4}}" name="SelectionChoice"
+                            required>
+                        <label class="form-check-label" for="Answer">{{question.Option4}}</label>
+                    </div>
+                </div>
+                <div class="text-right" style="width: 25%;margin-left:auto">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+            {% else %}
+            <div class="h-100 p-5 bg-light border rounded-3">
+                <h2>
+                    Congratulations. You have Answered all the questions
+                </h2>
+                <p>
+                    Here is your summary 
+                </p>
+                <div class="alert alert-success">
+                    <strong>You Answered </strong>{{data.passedQuestions}} Questions Correctly <br/>
+                </div>
+                <div class="alert alert-danger">
+                    <strong>You Failed </strong>{{data.failedQuestions}} Questions <br/>
+                </div>
+                <div class="alert alert-success">
+                    <strong>You Passed the Questions with a  </strong>{{data.passRate}} % <br/>
+                </div>
+                <a href="/Reset-progress">
+                    <button class="btn btn-outline-primary" type="button">Start Again</button>
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

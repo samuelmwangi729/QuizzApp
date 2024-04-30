@@ -1,0 +1,50 @@
+{%extends 'Layouts/Quizes.html'%}
+{%block content %}
+<div class="row">
+    <div class="col-sm-8 offset-sm-2">
+        <h2 class="text-center">
+            Cyber Sequrity Quiz app 
+        </h2>
+        {% if request.session.message %}
+            <div class="alert alert-success">
+                <strong>
+                    Message
+                </strong>
+                <p>
+                    {{request.session.message}}
+                </p>
+            </div>
+        {% else %}
+        {% endif %}
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3  mb-5">
+                <form action="/Get-Question/" class="mb-5" method="POSt">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Question</label>
+                        <textarea class="form-control" name="Question"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Please Key In <b>Four</b> Options Only</label>
+                        <input type="text" class="form-control m-2" name="Option1">
+                        <input type="text" class="form-control m-2" name="Option2">
+                        <input type="text" class="form-control m-2" name="Option3">
+                        <input type="text" class="form-control m-2" name="Option4">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Please Enter the Correct Answer</label>
+                        <input type="text" class="form-control m-2" name="CorrectAnswer">
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary btn-block">
+                            Submit Question
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

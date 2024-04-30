@@ -1,0 +1,13 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+{% include 'Layouts/header.html' %}
+
+<body data-spy="scroll" data-target=".navbar" data-offset="60">
+    {% include 'Layouts/Navbar.html' %}   
+    {% block content %}
+    {% endblock %}
+    {% include 'Layouts/scriptsQ.html'%}
+
+</body>
+</html>
