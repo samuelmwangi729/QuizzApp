@@ -45,35 +45,26 @@
                 </div>
             </form>
             {% else %}
-                {% if data %}
-                    <div class="h-100 p-5 bg-light border rounded-3">
-                        <h2>
-                            Congratulations. You have Answered all the questions
-                        </h2>
-                        <p>
-                            Here is your summary 
-                        </p>
-                        <div class="alert alert-success">
-                            <strong>You Answered </strong>{{data.passedQuestions}} Questions Correctly <br/>
-                        </div>
-                        <div class="alert alert-danger">
-                            <strong>You Failed </strong>{{data.failedQuestions}} Questions <br/>
-                        </div>
-                        <div class="alert alert-success">
-                            <strong>You Passed the Questions with a  </strong>{{data.passRate}} % <br/>
-                        </div>
-                        <a href="/Reset-progress">
-                            <button class="btn btn-outline-primary" type="button">Start Again</button>
-                        </a>
-                    </div>
-                {% else %}
-                <div class="alert alert-danger">
-                    <strong>
-                        Error!!!
-                    </strong>
-                    No questions Available. You can add any questions <a href="/Add_Questions">Here</a>
+            <div class="h-100 p-5 bg-light border rounded-3">
+                <h2>
+                    Congratulations. You have Answered all the questions
+                </h2>
+                <p>
+                    Here is your summary 
+                </p>
+                <div class="alert alert-success">
+                    <strong>You Answered </strong>{{data.passedQuestions}} Questions Correctly <br/>
                 </div>
-                {% endif %}
+                <div class="alert alert-danger">
+                    <strong>You Failed </strong>{{data.failedQuestions}} Questions <br/>
+                </div>
+                <div class="alert alert-success">
+                    <strong>You Passed the Questions with a  </strong>{{data.passRate}} % <br/>
+                </div>
+                <a href="/Reset-progress">
+                    <button class="btn btn-outline-primary" type="button">Start Again</button>
+                </a>
+            </div>
             {% endif %}
         </div>
     </div>
