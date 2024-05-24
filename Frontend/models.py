@@ -10,7 +10,7 @@ class Quiz(models.Model):
     Option4 = models.TextField(max_length=500,default=None)
     Answered = models.BooleanField(default=False)
     CorrectAnswer = models.TextField(max_length=500,default="None")
-    createdAt=models.DateTimeField(auto_now_add=True)
+    createdAt=models.DateTimeField(auto_now=True)
     updatedAt=models.DateTimeField(auto_now_add=False,auto_now=True)
 
     def __str__(self):
